@@ -2,21 +2,22 @@ import { useEffect, useState } from "react";
 import { getCoinMarketList, getCoinDataById } from "./CoinMarketAPI";
 
 import CoinModal from "./CoinModal";
-import { Image, Table } from "semantic-ui-react";
+import { Image, Table, Button, Icon, Label } from "semantic-ui-react";
 
 const CoinMarket = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [coinData, setCoinData] = useState<any>();
+  const [pageNumber, setPageNumber] = useState<number>(1);
 
   const [coinMarketList, setCoinMarketList] = useState([]);
 
-  const fetchCoinMarketList = async () => {
-    const response = await getCoinMarketList();
+  const fetchCoinMarketList = async (pageNum: number) => {
+    const response = await getCoinMarketList(pageNum);
     setCoinMarketList(response);
   };
 
   useEffect(() => {
-    fetchCoinMarketList();
+    fetchCoinMarketList(pageNumber);
   }, []);
 
   const getCoinData = async (coin: any) => {
@@ -29,6 +30,16 @@ const CoinMarket = () => {
     setModalOpen(false);
     setCoinData(null);
   };
+
+  const handleNext = () =>{
+    fetchCoinMarketList(pageNumber + 1);
+    setPageNumber(pageNumber + 1);
+  }
+
+  const handlePrevious = () =>{
+    fetchCoinMarketList(pageNumber - 1);
+    setPageNumber(pageNumber - 1);
+  }
 
   return (
     <>
@@ -62,17 +73,18 @@ const CoinMarket = () => {
               );
             })}
         </Table.Body>
-        <Table.Footer>
-          <Table.Row>
-            <Table.HeaderCell />
-            <Table.HeaderCell />
-            <Table.HeaderCell />
-            <Table.HeaderCell />
-            <Table.HeaderCell />
-            <Table.HeaderCell />
-          </Table.Row>
-        </Table.Footer>
       </Table>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Button.Group icon>
+          <Button onClick={handlePrevious}>
+            <Icon name="arrow circle left" />
+          </Button>
+          <Label>{pageNumber}</Label>
+          <Button onClick={handleNext}>
+            <Icon name="arrow circle right" />
+          </Button>
+        </Button.Group>
+      </div>
 
       {modalOpen && coinData && (
         <CoinModal
