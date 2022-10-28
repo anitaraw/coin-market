@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { Image, Table, Button, Icon, Label } from "semantic-ui-react";
 import { getCoinMarketList, getCoinDataById } from "./CoinMarketAPI";
 
 import CoinModal from "./CoinModal";
-import { Image, Table, Button, Icon, Label } from "semantic-ui-react";
+import { formatCurrencyToEuro } from "./util";
 
 const CoinMarket = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -11,20 +12,19 @@ const CoinMarket = () => {
   const [isNextDisabled, setNextDisabled] = useState<boolean>(false);
   const [isPreviousDisabled, setPreviousisabled] = useState<boolean>(true);
 
-
   const [coinMarketList, setCoinMarketList] = useState([]);
 
   const fetchCoinMarketList = async (pageNum: number) => {
     const response = await getCoinMarketList(pageNum);
     setCoinMarketList(response);
-    if(response.length === 0 ){
-        setNextDisabled(true);
+    if (response.length === 0) {
+      setNextDisabled(true);
     }
   };
 
   useEffect(() => {
     fetchCoinMarketList(pageNumber);
-  }, []);
+  });
 
   const getCoinData = async (coin: any) => {
     setModalOpen(true);
@@ -37,21 +37,21 @@ const CoinMarket = () => {
     setCoinData(null);
   };
 
-  const handleNext = () =>{
+  const handleNext = () => {
     setPreviousisabled(false);
     fetchCoinMarketList(pageNumber + 1);
     setPageNumber(pageNumber + 1);
-  }
+  };
 
-  const handlePrevious = () =>{
+  const handlePrevious = () => {
     setNextDisabled(false);
-    if(pageNumber === 1){
-        setPreviousisabled(true);
-    }else{
-        fetchCoinMarketList(pageNumber - 1);
-        setPageNumber(pageNumber - 1);
+    if (pageNumber === 1) {
+      setPreviousisabled(true);
+    } else {
+      fetchCoinMarketList(pageNumber - 1);
+      setPageNumber(pageNumber - 1);
     }
-  }
+  };
 
   return (
     <>
@@ -78,9 +78,11 @@ const CoinMarket = () => {
                   <Table.Cell>{item.name}</Table.Cell>
 
                   <Table.Cell>{item.symbol}</Table.Cell>
-                  <Table.Cell>{item.current_price}</Table.Cell>
-                  <Table.Cell>{item.high_24h}</Table.Cell>
-                  <Table.Cell>{item.low_24h}</Table.Cell>
+                  <Table.Cell>
+                    {formatCurrencyToEuro(item.current_price)}
+                  </Table.Cell>
+                  <Table.Cell>{formatCurrencyToEuro(item.high_24h)}</Table.Cell>
+                  <Table.Cell>{formatCurrencyToEuro(item.low_24h)}</Table.Cell>
                 </Table.Row>
               );
             })}
