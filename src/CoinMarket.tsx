@@ -24,7 +24,7 @@ const CoinMarket = () => {
 
   useEffect(() => {
     fetchCoinMarketList(pageNumber);
-  });
+  },[]);
 
   const getCoinData = async (coin: any) => {
     setModalOpen(true);
@@ -90,11 +90,14 @@ const CoinMarket = () => {
       </Table>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Button.Group icon>
-          <Button onClick={handlePrevious} disabled={isPreviousDisabled}>
+          <Button
+            onClick={() => handlePrevious()}
+            disabled={isPreviousDisabled}
+          >
             <Icon name="arrow circle left" />
           </Button>
           <Label>{pageNumber}</Label>
-          <Button onClick={handleNext} disabled={isNextDisabled}>
+          <Button onClick={() => handleNext()} disabled={isNextDisabled}>
             <Icon name="arrow circle right" />
           </Button>
         </Button.Group>
