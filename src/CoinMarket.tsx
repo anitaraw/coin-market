@@ -14,8 +14,8 @@ const CoinMarket = () => {
 
   const [coinMarketList, setCoinMarketList] = useState([]);
 
-  const fetchCoinMarketList = async (pageNum: number) => {
-    const response = await getCoinMarketList(pageNum);
+  const fetchCoinMarketList = async () => {
+    const response = await getCoinMarketList(pageNumber);
     setCoinMarketList(response);
     if (response.length === 0) {
       setNextDisabled(true);
@@ -23,8 +23,8 @@ const CoinMarket = () => {
   };
 
   useEffect(() => {
-    fetchCoinMarketList(pageNumber);
-  },[]);
+    fetchCoinMarketList();
+  },[pageNumber]);
 
   const getCoinData = async (coin: any) => {
     setModalOpen(true);
@@ -39,7 +39,6 @@ const CoinMarket = () => {
 
   const handleNext = () => {
     setPreviousisabled(false);
-    fetchCoinMarketList(pageNumber + 1);
     setPageNumber(pageNumber + 1);
   };
 
@@ -48,7 +47,6 @@ const CoinMarket = () => {
     if (pageNumber === 1) {
       setPreviousisabled(true);
     } else {
-      fetchCoinMarketList(pageNumber - 1);
       setPageNumber(pageNumber - 1);
     }
   };
@@ -91,13 +89,13 @@ const CoinMarket = () => {
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Button.Group icon>
           <Button
-            onClick={() => handlePrevious()}
+            onClick={handlePrevious}
             disabled={isPreviousDisabled}
           >
             <Icon name="arrow circle left" />
           </Button>
           <Label>{pageNumber}</Label>
-          <Button onClick={() => handleNext()} disabled={isNextDisabled}>
+          <Button onClick={handleNext} disabled={isNextDisabled}>
             <Icon name="arrow circle right" />
           </Button>
         </Button.Group>
