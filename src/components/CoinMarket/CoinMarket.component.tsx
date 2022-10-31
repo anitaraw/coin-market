@@ -3,7 +3,7 @@ import { Image, Table, Button, Icon, Label } from "semantic-ui-react";
 import { getCoinMarketList, getCoinDataById } from "../../api/CoinMarketAPI";
 
 import CoinDetails from "../CoinDetails/CoinDetails.component";
-import { formatCurrencyToEuro } from "../../util";
+import { formatCurrencyToEuro } from "../../utility/util";
 
 const CoinMarket = () => {
   const [modalOpen, setModalOpen] = useState(false);
