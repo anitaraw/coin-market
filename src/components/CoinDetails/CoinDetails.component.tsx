@@ -2,14 +2,13 @@ import { Button, Image, Modal } from "semantic-ui-react";
 import { Markup } from 'interweave';
 import './CoinDetails.css';
 
-function CoinDetails(props: any) {
+function CoinDetailsComponent(props: any) {
   const { open, handleModalClose, coinData } = props;
 
   return (
     <Modal
       open={open}
       onClose={handleModalClose}
-      onOpen={open}
       trigger={<Button>Long Modal</Button>}
     >
       <Modal.Header>COIN - {coinData.id.toUpperCase()} </Modal.Header>
@@ -34,4 +33,4 @@ function CoinDetails(props: any) {
   );
 }
 
-export default CoinDetails;
+export default CoinDetailsComponent;

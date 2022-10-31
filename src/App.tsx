@@ -1,6 +1,6 @@
 import "./App.css";
 import { Icon, Header, Grid } from "semantic-ui-react";
-import CoinMarket from "./components/CoinMarket/CoinMarket.component";
+import CoinMarketComponent from "./components/CoinMarket/CoinMarket.component";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         </Grid>
       </div>
       <div className="container">
-        <CoinMarket />
+        <CoinMarketComponent />
       </div>
     </div>
   );

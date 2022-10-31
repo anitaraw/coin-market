@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { Image, Table, Button, Icon, Label } from "semantic-ui-react";
 import { getCoinMarketList, getCoinDataById } from "../../api/CoinMarketAPI";
 
-import CoinDetails from "../CoinDetails/CoinDetails.component";
+import CoinDetailsComponent from "../CoinDetails/CoinDetails.component";
 import { formatCurrencyToEuro } from "../../utility/util";
 
-const CoinMarket = () => {
+const CoinMarketComponent = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [coinData, setCoinData] = useState<any>();
   const [pageNumber, setPageNumber] = useState<number>(1);
@@ -102,7 +102,7 @@ const CoinMarket = () => {
       </div>
 
       {modalOpen && coinData && (
-        <CoinDetails
+        <CoinDetailsComponent
           open={modalOpen}
           coinData={coinData}
           handleModalClose={handleModalClose}
@@ -112,4 +112,4 @@ const CoinMarket = () => {
   );
 };
 
-export default CoinMarket;
+export default CoinMarketComponent;
