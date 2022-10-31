@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Image, Table, Button, Icon, Label } from "semantic-ui-react";
-import { getCoinMarketList, getCoinDataById } from "./CoinMarketAPI";
+import { getCoinMarketList, getCoinDataById } from "../../api/CoinMarketAPI";
 
-import CoinModal from "./CoinModal";
-import { formatCurrencyToEuro } from "./util";
+import CoinDetails from "../CoinDetails/CoinDetails";
+import { formatCurrencyToEuro } from "../../util";
 
 const CoinMarket = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -15,7 +15,7 @@ const CoinMarket = () => {
   const [coinMarketList, setCoinMarketList] = useState([]);
 
   const fetchCoinMarketList = async () => {
-    const response = await getCoinMarketList(pageNumber);
+    const response: any =  await getCoinMarketList(pageNumber);
     setCoinMarketList(response);
     if (response.length === 0) {
       setNextDisabled(true);
@@ -102,7 +102,7 @@ const CoinMarket = () => {
       </div>
 
       {modalOpen && coinData && (
-        <CoinModal
+        <CoinDetails
           open={modalOpen}
           coinData={coinData}
           handleModalClose={handleModalClose}

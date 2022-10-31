@@ -1,8 +1,8 @@
 import { Button, Image, Modal } from "semantic-ui-react";
 import { Markup } from 'interweave';
-import './App.css';
+import './CoinDetails.css';
 
-function CoinModal(props: any) {
+function CoinDetails(props: any) {
   const { open, handleModalClose, coinData } = props;
 
   return (
@@ -34,4 +34,4 @@ function CoinModal(props: any) {
   );
 }
 
-export default CoinModal;
+export default CoinDetails;

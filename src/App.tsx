@@ -1,6 +1,6 @@
 import "./App.css";
 import { Icon, Header, Grid } from "semantic-ui-react";
-import CoinMarket from "./CoinMarket";
+import CoinMarket from "./components/CoinMarket/CoinMarket";
 
 function App() {
   return (

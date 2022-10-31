@@ -1,8 +1,3 @@
-.title{
-  font-weight: bold;
-}
-
-
 .container {
   width: 90%;
   margin: auto;
@@ -10,34 +5,8 @@
   padding: 2rem;
 }
 
-body{
+body {
   background-color: rgb(228 226 227);
-}
-
-
-.ui.header {
-  border: none;
-  margin: calc(2rem - 0.14285714em) 0 1rem;
-  padding: 10px;
-  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  line-height: 1.28571429em;
-  text-transform: none;
-  color: rgba(0, 0, 0, .87);
-  /* background-color: #adb5bd; */
-}
-
-.ui.grid>.row {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: inherit;
-  align-items: stretch;
-  width: 100% !important;
-  /* padding-top: 2rem; */
-  padding-bottom: 0rem;
-  background-color: #adb5bd;
 }
 
 .header-container {
