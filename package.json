@@ -29,7 +29,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "pre-commit": "lint-staged",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prettier": "prettier --write"
   },
   "lint-staged": {
     "*.+(ts|tsx)": [
