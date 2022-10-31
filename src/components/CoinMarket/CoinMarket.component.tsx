@@ -71,7 +71,7 @@ const CoinMarketComponent = () => {
               return (
                 <Table.Row onClick={() => getCoinData(item)}>
                   <Table.Cell textAlign="center">
-                    <Image src={item.image} rounded size="small" />
+                    <Image src={item.image} rounded size="mini" />
                   </Table.Cell>
                   <Table.Cell>{item.name}</Table.Cell>
 
