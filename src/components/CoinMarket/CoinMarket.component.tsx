@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Image, Table, Button, Icon, Label } from "semantic-ui-react";
 import { getCoinMarketList, getCoinDataById } from "../../api/CoinMarketAPI";
 
-import CoinDetails from "../CoinDetails/CoinDetails";
+import CoinDetails from "../CoinDetails/CoinDetails.component";
 import { formatCurrencyToEuro } from "../../util";
 
 const CoinMarket = () => {
