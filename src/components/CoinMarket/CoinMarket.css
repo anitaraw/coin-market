@@ -22,3 +22,11 @@
         padding-bottom: 0rem;
         background-color: #adb5bd;
     }
+
+    .ui.grid>.row :hover{
+        background-color: red;
+    }
+
+    .hover-style{
+        
+    }

@@ -4,7 +4,7 @@
     "es6": true,
     "jest": true
   },
-  "extends": ["prettier", "prettier/standard", "prettier/react"],
+  "extends": ["prettier"],
   "parserOptions": {
     "ecmaFeatures": {
       "tsx": true
@@ -15,10 +15,9 @@
   "plugins": ["react", "prettier"],
   "rules": {
     "no-console": "warn",
-    "import/first": "error",
     "react/prop-types": 0,
-    "linebreak-style": ["error", "unix"],
-    "prettier/prettier": "error",
+    "linebreak-style": ["error", "windows"],
+    "prettier/prettier": "warn",
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off"
   }

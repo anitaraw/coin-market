@@ -55,7 +55,7 @@ const CoinMarketComponent = () => {
     <>
       <Table padded="very">
         <Table.Header>
-          <Table.Row>
+          <Table.Row className="hover-style">
             <Table.HeaderCell textAlign="center">Image</Table.HeaderCell>
             <Table.HeaderCell>Name</Table.HeaderCell>
             <Table.HeaderCell>Symbol </Table.HeaderCell>
